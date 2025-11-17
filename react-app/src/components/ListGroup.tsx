@@ -1,6 +1,7 @@
 //import { Fragment } from "react/jsx-runtime";
 //import { Fragment } from "react/jsx-runtime";
-import type { MouseEvent } from "react";
+
+import { useState } from "react";
 
 function ListGroup(){
     //const => assignable just once
@@ -15,9 +16,10 @@ function ListGroup(){
 
     //-1=no item initially selected
     //0=first item initially selected
-    let selectedIndex = 0;
 
-    const handleClick = (event: MouseEvent) => console.log(event);
+    // Hook - Using builtin functions of react
+    const [selectedIndex, setSelectedIndex] = useState(-1);
+
     
     //items = [];
     //h1 and ul cannot be returned in diff fragments so they need to be fragmented or grouped together by using div or Fragment. Frament can be implemented by empty brackets or "Fragment"
@@ -35,7 +37,7 @@ function ListGroup(){
                     <li 
                         className={ selectedIndex === index ? 'list-group-item active':'list-group-item'} 
                         key={item} 
-                        onClick={handleClick}
+                        onClick={() => setSelectedIndex(index)}
                     >
                         {item}
                     </li>
