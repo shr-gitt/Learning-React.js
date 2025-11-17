@@ -3,16 +3,15 @@
 
 import { useState } from "react";
 
-function ListGroup(){
+//{items: [], heading: string}
+interface ListGroupProps{
+    items: string[];
+    heading: string;
+}
+
+function ListGroup({items, heading}: ListGroupProps){
     //const => assignable just once
     //let=> assignable again and again
-    const items = [
-            'New York',
-            'Sans Francisco',
-            'Tokyo',
-            'London',
-            'Paris'
-    ]; 
 
     //-1=no item initially selected
     //0=first item initially selected
@@ -30,7 +29,7 @@ function ListGroup(){
 
         return (
         <>
-            <h1>List</h1>
+            <h1>{heading}</h1>
             {items.length === 0 && <p>No item found</p>}
             <ul className="list-group">
                 {items.map((item, index) => (
